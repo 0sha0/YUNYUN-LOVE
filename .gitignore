@@ -1,0 +1,26 @@
+# Build output
+bin/
+obj/
+bin-*/
+*.user
+*.suo
+.vs/
+*.pdb
+*.ilk
+*.exp
+*.lib.bak
+
+# 中间产物
+.re/
+_import/
+*.dmp
+
+# 发行打包
+dist/
+*.zip
+
+# 系统杂项
+Thumbs.db
+Desktop.ini
+# 本地开发笔记（不上传：这是需求草稿，不属于可发布内容）
+prompt.txt

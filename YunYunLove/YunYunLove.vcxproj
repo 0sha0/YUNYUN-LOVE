@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{7E5A9C21-3C0B-4A17-9E52-2E1A60B7C0DE}</ProjectGuid>
+    <RootNamespace>YunYunLove</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <RepoRoot>$(MSBuildThisFileDirectory)..\</RepoRoot>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\obj\$(ProjectName)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;NOMINMAX;_CRT_SECURE_NO_WARNINGS;IMGUI_ENABLE_FREETYPE;IMGUI_DEFINE_MATH_OPERATORS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(RepoRoot)deps\imgui;$(RepoRoot)deps\imgui\backends;$(RepoRoot)deps\imgui\misc\freetype;$(RepoRoot)deps\freetype\include;$(RepoRoot)deps\miniz;$(RepoRoot)deps;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(RepoRoot)deps\detours\lib;$(RepoRoot)deps\freetype\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d12.lib;d3d11.lib;dxgi.lib;dxguid.lib;detours.lib;freetype.lib;ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;NOMINMAX;_CRT_SECURE_NO_WARNINGS;IMGUI_ENABLE_FREETYPE;IMGUI_DEFINE_MATH_OPERATORS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(RepoRoot)deps\imgui;$(RepoRoot)deps\imgui\backends;$(RepoRoot)deps\imgui\misc\freetype;$(RepoRoot)deps\freetype\include;$(RepoRoot)deps\miniz;$(RepoRoot)deps;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(RepoRoot)deps\detours\lib;$(RepoRoot)deps\freetype\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d12.lib;d3d11.lib;dxgi.lib;dxguid.lib;detours.lib;freetype.lib;ole32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="src\Log.cpp" />
+    <ClCompile Include="src\MonoApi.cpp" />
+    <ClCompile Include="src\MainThread.cpp" />
+    <ClCompile Include="src\MonoHost.cpp" />
+    <ClCompile Include="src\GameBridge.cpp" />
+    <ClCompile Include="src\AudioDecoder.cpp" />
+    <ClCompile Include="src\RenderHook.cpp" />
+    <ClCompile Include="src\OverlayTex.cpp" />
+    <ClCompile Include="src\UiKit.cpp" />
+    <ClCompile Include="src\AppUI.cpp" />
+    <ClCompile Include="src\Library.cpp" />
+    <ClCompile Include="src\MalodyChart.cpp" />
+    <ClCompile Include="src\OsuChart.cpp" />
+    <ClCompile Include="src\ZipUtil.cpp" />
+    <ClCompile Include="src\FileDialog.cpp" />
+    <ClCompile Include="src\Config.cpp" />
+    <ClCompile Include="..\deps\imgui\imgui.cpp" />
+    <ClCompile Include="..\deps\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\deps\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\deps\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="..\deps\imgui\misc\freetype\imgui_freetype.cpp" />
+    <ClCompile Include="..\deps\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="..\deps\imgui\backends\imgui_impl_dx12.cpp" />
+    <ClCompile Include="..\deps\imgui\backends\imgui_impl_dx11.cpp" />
+    <ClCompile Include="..\deps\miniz\miniz.c" />
+    <ClCompile Include="..\deps\miniz\miniz_tdef.c" />
+    <ClCompile Include="..\deps\miniz\miniz_tinfl.c" />
+    <ClCompile Include="..\deps\miniz\miniz_zip.c" />
+    <ClCompile Include="..\deps\stb_vorbis.c">
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\State.h" />
+    <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\MonoApi.h" />
+    <ClInclude Include="src\MainThread.h" />
+    <ClInclude Include="src\MonoHost.h" />
+    <ClInclude Include="src\GameBridge.h" />
+    <ClInclude Include="src\AudioDecoder.h" />
+    <ClInclude Include="src\RenderHook.h" />
+    <ClInclude Include="src\OverlayTex.h" />
+    <ClInclude Include="src\Theme.h" />
+    <ClInclude Include="src\UiKit.h" />
+    <ClInclude Include="src\AppUI.h" />
+    <ClInclude Include="src\Library.h" />
+    <ClInclude Include="src\MalodyChart.h" />
+    <ClInclude Include="src\OsuChart.h" />
+    <ClInclude Include="src\PathUtil.h" />
+    <ClInclude Include="src\ZipUtil.h" />
+    <ClInclude Include="src\FileDialog.h" />
+    <ClInclude Include="src\Config.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="YunYunLove.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
